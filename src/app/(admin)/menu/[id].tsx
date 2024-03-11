@@ -37,33 +37,8 @@ const ProductDetailsScreen = () => {
         style={styles.image}
         resizeMode='contain'
       />
-      <Text>Select Size</Text>
-      <View style={styles.sizeContainer}>
-        {sizes.map((size, index) => (
-          <Pressable
-            key={index}
-            style={[
-              styles.size,
-              { backgroundColor: selectSize === size ? "lightblue" : "white" },
-            ]}
-            onPress={() => {
-              setSelectSize(size);
-            }}
-          >
-            <Text
-              style={[
-                styles.sizeText,
-                { color: selectSize === size ? "#333" : "gray" },
-              ]}
-            >
-              {size}
-            </Text>
-          </Pressable>
-        ))}
-      </View>
-
+      <Text style={styles.name}>{product?.name}</Text>
       <Text style={styles.price}>${product?.price.toFixed(2)}</Text>
-      <Button onPress={addToCart} text='Add to cart'></Button>
     </View>
   );
 };
@@ -78,29 +53,15 @@ const styles = StyleSheet.create({
     width: "100%",
     aspectRatio: 1,
   },
-  price: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: "auto",
-  },
-  sizeContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginVertical: 20,
-  },
-  size: {
-    backgroundColor: "lightblue",
-    width: 50,
-    aspectRatio: 1,
-    borderRadius: 25,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  sizeText: {
+  name: {
     fontSize: 30,
     fontWeight: "500",
     color: "#333",
   },
+  price: {
+    fontSize: 18,
+    fontWeight: "bold",
+  }
 });
 
 export default ProductDetailsScreen;
